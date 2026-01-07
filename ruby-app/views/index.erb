@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ruby Live Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        .ruby-badge {
+            display: inline-block;
+            background: #CC342D;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+            border-radius: 8px;
+        }
+        
+        .code {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            text-align: left;
+            overflow-x: auto;
+        }
+        
+        form {
+            margin: 30px 0;
+        }
+        
+        input[type="text"] {
+            width: 70%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #5a67d8;
+        }
+        
+        .status {
+            background: #10b981;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        .links {
+            margin-top: 30px;
+        }
+        
+        .links a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Ruby Live di GitHub Codespaces</h1>
+        
+        <div class="ruby-badge">
+            Ruby <%= RUBY_VERSION %>
+        </div>
+        
+        <div class="info-box">
+            <h3>✨ Fitur Demo:</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Server Ruby Sinatra berjalan live</li>
+                <li>Responsive HTML dengan CSS modern</li>
+                <li>API endpoint JSON</li>
+                <li>Form handling</li>
+                <li>Health check endpoint</li>
+            </ul>
+        </div>
+        
+        <form action="/greet" method="POST">
+            <input type="text" name="name" placeholder="Masukkan nama Anda..." required>
+            <button type="submit">Kirim Sambutan</button>
+        </form>
+        
+        <div class="code">
+            # Kode Ruby yang berjalan:<br>
+            get '/' do<br>
+            &nbsp;&nbsp;erb :index<br>
+            end<br><br>
+            
+            get '/api/hello' do<br>
+            &nbsp;&nbsp;content_type :json<br>
+            &nbsp;&nbsp;{ message: "Hello!" }.to_json<br>
+            end
+        </div>
+        
+        <div class="links">
+            <a href="/api/hello" target="_blank">API Endpoint</a> | 
+            <a href="/health" target="_blank">Health Check</a> | 
+            <a href="https://github.com" target="_blank">GitHub</a>
+        </div>
+        
+        <div class="status">
+            ✅ SERVER LIVE
+        </div>
+        
+        <p style="margin-top: 20px; color: #666;">
+            Server berjalan di: <strong><%= request.url %></strong>
+        </p>
+    </div>
+</body>
+</html>
